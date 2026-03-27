@@ -40,7 +40,7 @@ To capture "Customer Health," I engineered several custom metrics that outperfor
 | :--- | :--- |
 | **Training Accuracy** | 76.73% |
 | **Testing Accuracy** | 73.13% |
-| **Algorithm** | Random Forest (max_depth=7) |
+| **Algorithm** | Random Forest (max_depth=8) |
 | **Dataset Size** | 1,000,000+ Rows |
 
 ---
