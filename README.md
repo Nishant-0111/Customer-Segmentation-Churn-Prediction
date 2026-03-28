@@ -49,7 +49,7 @@ To capture "Customer Health," I engineered several custom metrics that outperfor
 1. **Live Demo:** Click the Streamlit badge at the top to test the model in your browser.
 2. **Local Setup:**
    ```bash
-   git clone [https://github.com/Nishant-0111/Customer-Segmentation-Churn-Prediction.git](https://github.com/Nishant-0111/Customer-Segmentation-Churn-Prediction.git)
-   cd Customer-Segmentation-Churn-Prediction
+   git clone [https://github.com/Nishant-0111/Customer-RFM-Churn-Predictor.git](https://github.com/Nishant-0111/Customer-RFM-Churn-Predictor.git)
+   cd Customer-RFM-Churn-Predictor
    pip install -r requirements.txt
    streamlit run app.py
