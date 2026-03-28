@@ -1,4 +1,4 @@
-# Customer-Segmentation-Churn-Prediction
+# Customer Churn & RFM Analytics Platform
 An end-to-end ML project using RFM Analysis for segmentation and Random Forest for churn prediction."
 # 🚀 E-Commerce Customer Churn & RFM Predictor
 
