@@ -6,7 +6,8 @@ import numpy as np
 # 1. Load the model
 model = joblib.load('churn_model.pkl')
 
-st.title("🚀 Customer Retention Predictor")
+st.set_page_config(page_title="Customer Churn Predictor", page_icon="🚀")
+st.title("🚀 Customer Churn Predictor")
 
 # 2. User Inputs (Capitalized variable names)
 col1, col2 = st.columns(2)
