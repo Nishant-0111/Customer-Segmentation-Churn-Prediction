@@ -2,7 +2,7 @@
 An end-to-end ML project using RFM Analysis for segmentation and Random Forest for churn prediction."
 # 🚀 E-Commerce Customer RFM & Churn Predictor
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge.svg)](https://rfm-customer-segments.streamlit.app/) 
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge.svg)](https://customer-rfm-churn-predictor.streamlit.app/) 
 
 ### 📌 Project Overview
 This project predicts customer churn for an e-retailer using a Random Forest Classifier. By analyzing over 1 million transactions, I developed a model that identifies "at-risk" customers based on their purchase behavior, allowing for proactive retention strategies.
