@@ -3,53 +3,49 @@ import joblib
 import pandas as pd
 import numpy as np
 
-# 1. Load the "Honest" model
-# Make sure the filename matches your final saved model
+# 1. Load the model
 model = joblib.load('churn_model.pkl')
 
-st.title("🚀 Customer Retention Predictor")
-st.write("Predicting churn based on behavioral patterns and tenure.")
+st.set_page_config(page_title="Customer Churn Predictor", page_icon="🚀")
+st.title("🚀 Customer Churn Predictor")
 
-# 2. User Inputs (The 'Raw' Data)
+# 2. User Inputs (Capitalized variable names)
 col1, col2 = st.columns(2)
 
 with col1:
-    frequency = st.number_input("Total Purchases (Frequency)", min_value=1, value=5)
-    monetary = st.number_input("Total Spent ($)", min_value=1.0, value=500.0)
-    customer_lifetime = st.number_input("Days since first purchase (Tenure in Days)", min_value=0, value=100)
+    # We name these 'Frequency' and 'Monetary' to match the model's needs
+    Frequency = st.number_input("Total Purchases (Frequency)", min_value=1, value=5)
+    Monetary = st.number_input("Total Spent ($)", min_value=1.0, value=500.0)
+    Customer_Lifetime = st.number_input("Days since first purchase (Tenure)", min_value=0, value=100)
 
 if st.button("Predict Churn Status"):
-    # 3. BACKGROUND FEATURE ENGINEERING 
-    # Must match the training logic exactly
-    avg_spend = monetary / frequency
-    purchase_interval = customer_lifetime / max((frequency - 1), 1)
-    daily_value = monetary / (customer_lifetime + 1)
-    log_monetary = np.log1p(monetary)
+    # 3. BACKGROUND FEATURE ENGINEERING (All Capitalized)
+    Avg_Spend = Monetary / Frequency
+    Purchase_Interval = Customer_Lifetime / max((Frequency - 1), 1)
+    Daily_Value = Monetary / (Customer_Lifetime + 1)
+    Log_Monetary = np.log1p(Monetary)
 
-    # 4. Create the input dictionary to ensure order is handled by DataFrame
+    # 4. Create the input dictionary 
+    # Keys and Values now match perfectly in case and name
     input_data = {
-        'Frequency': frequency,
-        'Avg_Spend': avg_spend,
-        'Customer_Lifetime': customer_lifetime,
-        'Purchase_Interval': purchase_interval,
-        'Daily_Value': daily_value,
-        'Log_Monetary': log_monetary
+        'Frequency': Frequency,
+        'Avg_Spend': Avg_Spend,
+        'Customer_Lifetime': Customer_Lifetime,
+        'Purchase_Interval': Purchase_Interval,
+        'Daily_Value': Daily_Value,
+        'Log_Monetary': Log_Monetary
     }
     
-    # Convert to DataFrame
+    # 5. Convert to DataFrame
     features = pd.DataFrame([input_data])
     
-    # 5. Make prediction
+    # 6. Make prediction
     prediction = model.predict(features)
     probability = model.predict_proba(features)[0][1]
 
-    # 6. Display Results
+    # 7. Display Results
     st.divider()
     if prediction[0] == 1:
-        st.error(f"⚠️ **High Risk!** Probability of Churn: {probability:.2%}")
-        st.progress(probability)
-        st.write("💡 **Action:** This customer is slowing down. Send a re-engagement discount.")
+        st.error(f"⚠️ **High Risk!** Churn Probability: {probability:.2%}")
     else:
-        st.success(f"✅ **Low Risk.** Probability of Churn: {probability:.2%}")
-        st.progress(probability)
-        st.write("💡 **Action:** High engagement! Keep them happy with loyalty points.")
+        st.success(f"✅ **Low Risk.** Churn Probability: {probability:.2%}")
